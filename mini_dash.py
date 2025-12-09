@@ -9,7 +9,7 @@ app = Dash()
 # Requires Dash 2.17.0 or later
 app.layout = [
     html.H1(children='Meu primeiro Dash', style={'textAlign':'center'}),
-    dcc.Dropdown(df.country.unique(), 'Canada', id='dropdown-selection'),
+    dcc.Dropdown(df.country.unique(), 'Brazil', id='dropdown-selection'),
     dcc.Graph(id='graph-content')
 ]
 
@@ -19,7 +19,7 @@ app.layout = [
 )
 def update_graph(value):
     dff = df[df.country==value]
-    return px.line(dff, x='year', y='pop')
+    return px.line(dff, x='year', y='pop', markers=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
